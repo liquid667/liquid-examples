@@ -1,0 +1,15 @@
+<classpath>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/i18nlog/i18nlog/1.0.10/i18nlog-1.0.10.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/infinispan/infinispan-core/4.2.0.FINAL/infinispan-core-4.2.0.FINAL.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/jboss-common-core/2.2.14.GA/jboss-common-core-2.2.14.GA.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/logging/jboss-logging-spi/2.0.5.GA/jboss-logging-spi-2.0.5.GA.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/javaee/jboss-transaction-api/1.0.1.GA/jboss-transaction-api-1.0.1.GA.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jgroups/jgroups/2.11.0.GA/jgroups-2.11.0.GA.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/marshalling/marshalling-api/1.2.3.GA/marshalling-api-1.2.3.GA.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/rhq/helpers/rhq-pluginAnnotations/3.0.1/rhq-pluginAnnotations-3.0.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/marshalling/river/1.2.3.GA/river-1.2.3.GA.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+</classpath>
