@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enter_phone_number">Enter the phone number of the recipient</string>
+    <string name="app_name">vehicle-locator</string>
+    <string name="message">Message</string>
+    <string name="send_sms">Send SMS</string>
+    <string name="enter_phone_message">Please enter both phone number and message</string>
+    <string name="sms_sent">SMS sent</string>
+    <string name="generic_faliure">Generic faliure</string>
+    <string name="no_service">No service</string>
+    <string name="null_pdu">Null PDU</string>
+    <string name="radio_off">Radio off</string>
+    <string name="sms_delivered">SMS delivered</string>
+    <string name="sms_not_delivered">SMS not delivered</string>
+</resources>
