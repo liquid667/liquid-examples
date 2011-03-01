@@ -12,4 +12,6 @@
     <string name="radio_off">Radio off</string>
     <string name="sms_delivered">SMS delivered</string>
     <string name="sms_not_delivered">SMS not delivered</string>
+    <string name="torsk">Torsk</string>
+    <string name="kolja">Kolja</string>
 </resources>

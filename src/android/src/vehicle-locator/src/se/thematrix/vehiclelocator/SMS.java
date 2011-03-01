@@ -1,6 +1,8 @@
 package se.thematrix.vehiclelocator;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,6 +10,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +49,20 @@ public class SMS extends Activity {
 					Toast.makeText(getBaseContext(), 
 							R.string.enter_phone_message, 
 							Toast.LENGTH_SHORT).show();
+					
+					String ns = Context.NOTIFICATION_SERVICE;
+					NotificationManager notMgr = (NotificationManager)getSystemService(ns);
+					
+					CharSequence tickerText = "Hello";
+					long when = System.currentTimeMillis();
+					
+					Notification not = new Notification(0, tickerText, when);
+					
+					Context context  = getApplicationContext();
+					CharSequence contextTitle = "title";
+					CharSequence contextText = "text";
+					
+					Intent notificationIntent = new Intent(this, SMS.class);
 				}
 			}
 		});
@@ -103,4 +124,42 @@ public class SMS extends Activity {
 		SmsManager sms = SmsManager.getDefault();
 		sms.sendTextMessage(phoneNo, null, message, sentPi, deliveredPi);
 	}
+
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.game_menu, menu);
+		return true;
+	}
+
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.torsk:
+			Toast.makeText(getBaseContext(), R.string.sms_delivered, Toast.LENGTH_SHORT);
+			return true;
+		case R.id.kolja:
+			Toast.makeText(getBaseContext(), R.string.sms_not_delivered, Toast.LENGTH_LONG);
+			return true;
+		default:
+			super.onOptionsItemSelected(item);
+		}
+		return false;
+	}
+
+
+//	@Override
+//	public void onCreateContextMenu(ContextMenu menu, View v,
+//			ContextMenuInfo menuInfo) {
+//		MenuInflater inflater = getMenuInflater();
+//		inflater.inflate(R.menu.game_menu, menu);
+//	}
+	
+	
+	
+	
+	
+	
 }
