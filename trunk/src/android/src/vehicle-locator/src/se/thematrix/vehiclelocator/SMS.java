@@ -1,17 +1,19 @@
 package se.thematrix.vehiclelocator;
 
 import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Contacts.People;
+import android.provider.ContactsContract;
 import android.telephony.SmsManager;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,7 +23,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class SMS extends Activity {
+	
+	public static final String TAG = "SMS";
+	private static final int PICK_CONTACT = 0;
+	
 	Button btnSendSms;
+	Button btnShowLatLon;
+	Button btnSelectContact;
+	
 	EditText txtPhoneNo;
 	EditText txtMessage;
 	
@@ -30,9 +39,17 @@ public class SMS extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//        						WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        
         setContentView(R.layout.main);
         
         btnSendSms = (Button)findViewById(R.id.btnSendSms);
+        btnShowLatLon = (Button)findViewById(R.id.btnShowLatLon);
+        btnSelectContact = (Button)findViewById(R.id.btnSelectContact);
+        
         txtPhoneNo = (EditText)findViewById(R.id.txtPhoneNo);
         txtMessage = (EditText)findViewById(R.id.txtMessage);
         
@@ -49,31 +66,63 @@ public class SMS extends Activity {
 					Toast.makeText(getBaseContext(), 
 							R.string.enter_phone_message, 
 							Toast.LENGTH_SHORT).show();
-					
-					String ns = Context.NOTIFICATION_SERVICE;
-					NotificationManager notMgr = (NotificationManager)getSystemService(ns);
-					
-					CharSequence tickerText = "Hello";
-					long when = System.currentTimeMillis();
-					
-					Notification not = new Notification(0, tickerText, when);
-					
-					Context context  = getApplicationContext();
-					CharSequence contextTitle = "title";
-					CharSequence contextText = "text";
-					
-					Intent notificationIntent = new Intent(this, SMS.class);
 				}
+			}
+		});
+        
+        btnShowLatLon.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				LocationManager locManager = (LocationManager)getSystemService(LOCATION_SERVICE);
+				Location location = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+				
+				Log.d(TAG, "location fetched!!");
+				
+				if(location != null){
+					Toast.makeText(getBaseContext(), "location är inte null!!", Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(getBaseContext(), "location är null!!", Toast.LENGTH_SHORT).show();
+				}
+				
+//				String message = "lat: "+location.getLatitude()+", lon: "+location.getLongitude();
+//				
+//				Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT).show();
+			}
+		});
+        
+        btnSelectContact.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+			Intent intent = new Intent(Intent.ACTION_PICK);
+			intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
+			startActivityForResult(intent, PICK_CONTACT);
 			}
 		});
     }
 
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		Toast.makeText(this, "requestCode: "+requestCode+" resultCode: "+resultCode, Toast.LENGTH_LONG).show();
+		if(requestCode == PICK_CONTACT){
+			if(resultCode == RESULT_OK){
+				Cursor contact = managedQuery(data.getData(), null, null, null, null);
+				contact.moveToFirst();
+				String name = contact.getString(contact.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
+				
+				txtPhoneNo.setText(name);
+				
+				Toast.makeText(this, "name: "+name, Toast.LENGTH_LONG).show();
+				
+			}
+		}
+//		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+
 	protected void sendSMS(String phoneNo, String message) {
-//		PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, SMS.class), 0);
-//		SmsManager sms = SmsManager.getDefault();
-//		sms.sendTextMessage(phoneNo, null, message, pi, null);
-		
 		String sent = "SMS_SENT";
 		String delivered = "SMS_DELIVERED";
 		
@@ -148,18 +197,4 @@ public class SMS extends Activity {
 		}
 		return false;
 	}
-
-
-//	@Override
-//	public void onCreateContextMenu(ContextMenu menu, View v,
-//			ContextMenuInfo menuInfo) {
-//		MenuInflater inflater = getMenuInflater();
-//		inflater.inflate(R.menu.game_menu, menu);
-//	}
-	
-	
-	
-	
-	
-	
 }
