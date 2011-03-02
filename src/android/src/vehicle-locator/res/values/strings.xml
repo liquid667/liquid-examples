@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="enter_phone_number">Enter the phone number of the recipient</string>
-    <string name="app_name">vehicle-locator</string>
+    <string name="app_name">my vehicle locator</string>
     <string name="message">Message</string>
     <string name="send_sms">Send SMS</string>
     <string name="enter_phone_message">Please enter both phone number and message</string>
@@ -14,4 +14,6 @@
     <string name="sms_not_delivered">SMS not delivered</string>
     <string name="torsk">Torsk</string>
     <string name="kolja">Kolja</string>
+    <string name="show_lat_lon">Show GPS position</string>
+    <string name="select_contact">Select contact</string>
 </resources>
