@@ -15,5 +15,5 @@
     <string name="torsk">Torsk</string>
     <string name="kolja">Kolja</string>
     <string name="show_lat_lon">Show GPS position</string>
-    <string name="select_contact">Select contact</string>
+    <string name="select_contact">+</string>
 </resources>
