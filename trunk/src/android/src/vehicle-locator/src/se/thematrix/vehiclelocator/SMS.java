@@ -10,7 +10,6 @@ import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.Contacts.People;
 import android.provider.ContactsContract;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -55,7 +54,6 @@ public class SMS extends Activity {
         
         btnSendSms.setOnClickListener(new View.OnClickListener() {
 			
-			@Override
 			public void onClick(View v) {
 				String phoneNo = txtPhoneNo.getText().toString();
 				String message = txtMessage.getText().toString();
@@ -72,7 +70,6 @@ public class SMS extends Activity {
         
         btnShowLatLon.setOnClickListener(new View.OnClickListener() {
 			
-			@Override
 			public void onClick(View v) {
 				LocationManager locManager = (LocationManager)getSystemService(LOCATION_SERVICE);
 				Location location = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -93,7 +90,6 @@ public class SMS extends Activity {
         
         btnSelectContact.setOnClickListener(new View.OnClickListener() {
 			
-			@Override
 			public void onClick(View v) {
 			Intent intent = new Intent(Intent.ACTION_PICK);
 			intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
@@ -108,14 +104,40 @@ public class SMS extends Activity {
 		Toast.makeText(this, "requestCode: "+requestCode+" resultCode: "+resultCode, Toast.LENGTH_LONG).show();
 		if(requestCode == PICK_CONTACT){
 			if(resultCode == RESULT_OK){
-				Cursor contact = managedQuery(data.getData(), null, null, null, null);
-				contact.moveToFirst();
-				String name = contact.getString(contact.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
-				
-				txtPhoneNo.setText(name);
-				
-				Toast.makeText(this, "name: "+name, Toast.LENGTH_LONG).show();
-				
+				String phoneNumber = "";
+				Cursor cursor = managedQuery(data.getData(), null, null, null,
+						null);
+				cursor.moveToFirst();
+				String contactId = cursor.getString(cursor
+						.getColumnIndex(ContactsContract.Contacts._ID));
+				String name = cursor
+						.getString(cursor
+								.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
+
+				String hasPhone = cursor
+						.getString(cursor
+								.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+				Toast.makeText(this, "name: "+name+" , id: "+contactId+" , hasPhone: "+hasPhone, Toast.LENGTH_LONG).show();
+
+				if (hasPhone.equalsIgnoreCase("1"))
+					hasPhone = "true";
+				else
+					hasPhone = "false";
+
+				if (Boolean.parseBoolean(hasPhone)) {
+					Cursor phones = getContentResolver().query(
+							ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+							null,
+							ContactsContract.CommonDataKinds.Phone.CONTACT_ID
+									+ " = " + contactId, null, null);
+					while (phones.moveToNext()) {
+						phoneNumber = phones
+								.getString(phones
+										.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+						txtPhoneNo.setText(phoneNumber);
+					}
+					phones.close();
+				}
 			}
 		}
 //		super.onActivityResult(requestCode, resultCode, data);
