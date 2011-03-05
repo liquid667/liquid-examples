@@ -13,9 +13,6 @@
 
   <modules>
 	<module>liquid-examples</module>
-	<module>scala-examples</module>
-    	<module>infinispan-webapp</module>
-    	<module>jboss-infinispan-example</module>
-    	<module>infinispan-example</module>
+	<module>infinispan</module>
   </modules>
 </project>

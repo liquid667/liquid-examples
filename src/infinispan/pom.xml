@@ -12,6 +12,10 @@
   </properties>
 
   <modules>
+	<module>infinispan-example</module>
     <module>infinispan-web</module>
+	<module>infinispan-webapp</module>
+	<module>jboss-infinispan-example</module>
   </modules>
+  
 </project>
