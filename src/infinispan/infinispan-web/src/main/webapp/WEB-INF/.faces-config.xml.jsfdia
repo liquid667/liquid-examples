@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#helloWorld.jsp" PATH="/helloWorld.jsp"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#helloWorld.jsp:0" NAME="item"
+   PATH="/helloWorld.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#page2.jsp" NAME="output"
+    PATH="/page2.jsp" TARGET="rules:#page2.jsp" TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#page2.jsp" PATH="/page2.jsp"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#page2.jsp:0" NAME="item" PATH="/page2.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="back::#helloWorld.jsp" NAME="output"
+    PATH="/helloWorld.jsp" TARGET="rules:#helloWorld.jsp" TITLE="back" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
