@@ -48,6 +48,17 @@
                <encoding>UTF-8</encoding>
             </configuration>
          </plugin>
+		 
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jboss-maven-plugin</artifactId>
+				<version>1.4.1</version>
+				<configuration>
+					<jbossHome>${env.JBOSS_HOME}</jbossHome>
+					<serverName>default</serverName>
+				</configuration>
+			</plugin>
+		 
 		</plugins>
     </build>
     
