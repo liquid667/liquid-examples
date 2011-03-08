@@ -3,15 +3,12 @@ package se.thematrix.cache;
 import java.util.Collection;
 
 import org.infinispan.Cache;
-import org.infinispan.manager.CacheContainer;
-import org.infinispan.manager.DefaultCacheManager;
 
 import se.thematrix.model.User;
 
 public class DataCacheImpl implements DataCache {
 	
-	private static CacheContainer container = new DefaultCacheManager("/infinispan-config.xml");
-	private static Cache<Integer,User> cache = container.getCache();
+	private static Cache<Integer,User> cache = MyCacheContainer.getCache();
 	
 	@Override
 	public int size() {
