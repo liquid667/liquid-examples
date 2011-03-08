@@ -16,8 +16,8 @@ import java.io.IOException;
  */
 public class MyCacheContainer {
 
-   private static final String INFINISPAN_CONFIGURATION = "infinispan-local.xml";
-//   private static final String INFINISPAN_CONFIGURATION = "infinispan-clustered-tcp.xml";
+//   private static final String INFINISPAN_CONFIGURATION = "infinispan-local.xml";
+	private static final String INFINISPAN_CONFIGURATION = "infinispan-clustered-tcp.xml";
 //   private static final String INFINISPAN_CONFIGURATION = "infinispan-clustered-udp.xml";
 //   private static final String INFINISPAN_CONFIGURATION = "infinispan-clustered-ec2.xml";
 
