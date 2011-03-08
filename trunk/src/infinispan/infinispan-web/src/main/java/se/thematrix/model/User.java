@@ -10,8 +10,7 @@ public class User implements Serializable {
 	private String address;
 	private int age;
 
-	public User() {
-	}
+	public User() {}
 	
 	public User(String name, String address, int age) {
 		super();
