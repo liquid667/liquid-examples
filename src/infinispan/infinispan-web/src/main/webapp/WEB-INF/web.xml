@@ -198,7 +198,7 @@
         </init-param>
         <init-param>
         	<param-name>resteasy.resources</param-name>
-        	<param-value>se.thematrix.resteasy.Library</param-value>
+        	<param-value>se.thematrix.restlets.CacheRestlet</param-value>
         </init-param>
     </servlet>    
 
@@ -213,7 +213,7 @@
 	    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
 	    <init-param>
 	        <param-name>com.sun.jersey.config.property.packages</param-name>
-	        <param-value>se.thematrix.jersey</param-value>
+	        <param-value>se.thematrix.restlets</param-value>
 	    </init-param>
 	    <load-on-startup>1</load-on-startup>
 	</servlet>

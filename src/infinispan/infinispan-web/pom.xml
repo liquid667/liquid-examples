@@ -20,7 +20,6 @@
         <maven.jetty.plugin.version>6.1.22</maven.jetty.plugin.version>
         <log4j.version>1.2.13</log4j.version>
         <resteasy.version>2.0.1.GA</resteasy.version>
-
         <jersey.version>1.5</jersey.version>
 
 		<infinispan.version>4.2.0.FINAL</infinispan.version>
@@ -189,7 +188,7 @@
 		<!-- Jersey Core client -->	   
 		<dependency>
 		    <groupId>com.sun.jersey</groupId>
-		    <artifactId>jersey-client</artifactId>
+		    <artifactId>jersey-server</artifactId>
 		    <version>${jersey.version}</version>
 		</dependency>	   
     </dependencies>

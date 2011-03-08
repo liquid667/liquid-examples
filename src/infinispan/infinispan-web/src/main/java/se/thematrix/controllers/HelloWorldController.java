@@ -1,6 +1,6 @@
 package se.thematrix.controllers;
 
-import se.thematrix.DataCacheImpl;
+import se.thematrix.cache.DataCacheImpl;
 
 /**
  * A typical simple backing bean, that is backed to <code>helloworld.jsp</code>
@@ -49,7 +49,7 @@ public class HelloWorldController {
     
     public String add(){
     	
-    	cache.put(getName(), getName());
+//    	cache.put(getName(), getName());
     	
     	return "success";
     }
@@ -61,7 +61,7 @@ public class HelloWorldController {
     	String id = getKey();
     	
     	if(id != null){
-    		cache.remove(id);
+//    		cache.remove(id);
     	}
     	
     	return "success";
