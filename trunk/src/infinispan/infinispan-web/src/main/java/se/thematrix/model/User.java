@@ -8,16 +8,40 @@ public class User implements Serializable {
 
 	private String name;
 	private String address;
-	private int age;
+//	private int age;
+//	private String phone;
+
+//	public String getPhone() {
+//		return phone;
+//	}
+//
+//	public void setPhone(String phone) {
+//		this.phone = phone;
+//	}
 
 	public User() {}
 	
-	public User(String name, String address, int age) {
+	public User(String name, String address) {
 		super();
 		this.name = name;
 		this.address = address;
-		this.age = age;
 	}
+
+//	public User(String name, String address, int age) {
+//		super();
+//		this.name = name;
+//		this.address = address;
+//		this.age = age;
+//		this.phone = "0313226526";
+//	}
+
+//	public User(String name, String address, int age, String phone) {
+//		super();
+//		this.name = name;
+//		this.address = address;
+//		this.age = age;
+//		this.phone = phone;
+//	}
 
 	public String getName() {
 		return name;
@@ -35,17 +59,23 @@ public class User implements Serializable {
 		this.address = address;
 	}
 
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", address=" + address + ", age=" + age
-				+ "]";
+		return "User [name=" + name + ", address=" + address + "]";
 	}
+
+//	public int getAge() {
+//		return age;
+//	}
+//
+//	public void setAge(int age) {
+//		this.age = age;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "User [name=" + name + ", address=" + address + ", age=" + age
+//				+ ", phone=" + phone + "]";
+//	}
+	
 }
