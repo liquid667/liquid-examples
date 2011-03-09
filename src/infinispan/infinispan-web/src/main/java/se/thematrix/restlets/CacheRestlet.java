@@ -31,7 +31,7 @@ public class CacheRestlet implements Cache {
 	@PUT
 	@Path("/cache/{key}/{name}/{address}/{age}")
 	public void add(@PathParam("key") Integer key, @PathParam("name") String name, @PathParam("address") String address, @PathParam("age") int age) {
-		User u = new User(name, address, age);
+		User u = new User(name, address);
 		cache.put(key, u);
 	}
 

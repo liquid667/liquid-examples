@@ -8,7 +8,7 @@ import se.thematrix.model.User;
 
 public class DataCacheImpl implements DataCache {
 	
-	private final static Cache<Integer,User> cache = MyCacheContainer.getCache("another");
+	private final static Cache<Integer,User> cache = MyCacheContainer.getCache();
 	
 	@Override
 	public int size() {
