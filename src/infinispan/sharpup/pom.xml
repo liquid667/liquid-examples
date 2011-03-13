@@ -9,10 +9,10 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>se.thematrix</groupId>
-    <artifactId>infinispan-web</artifactId>
+    <artifactId>sharpup-web</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>infinispan-web</name>
+    <name>sharpup-web</name>
 
     <properties>
         <jsf-myfaces.version>1.2.9</jsf-myfaces.version>
@@ -26,7 +26,7 @@
     </properties>
 
     <build>
-        <finalName>infinispan-web</finalName>
+        <finalName>sharpup-web</finalName>
         <plugins>
             <plugin>
                 <!--This plugin allows to run the example using mvn jetty:run -->
