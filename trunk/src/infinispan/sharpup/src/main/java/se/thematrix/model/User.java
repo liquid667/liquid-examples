@@ -6,76 +6,82 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 3426477320353647086L;
 
-	private String name;
-	private String address;
-//	private int age;
-//	private String phone;
-
-//	public String getPhone() {
-//		return phone;
-//	}
-//
-//	public void setPhone(String phone) {
-//		this.phone = phone;
-//	}
-
-	public User() {}
+	private int userId;
+	private String userName;
+	private String password;
+	private String firstName;
+	private String lastName;
 	
-	public User(String name, String address) {
+	private UserPreferences userPreferences;
+	
+	public User() {
 		super();
-		this.name = name;
-		this.address = address;
+	}
+	
+	public User(int userId, String userName, String password, String firstName,
+			String lastName, UserPreferences userPreferences) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userPreferences = userPreferences;
 	}
 
-//	public User(String name, String address, int age) {
-//		super();
-//		this.name = name;
-//		this.address = address;
-//		this.age = age;
-//		this.phone = "0313226526";
-//	}
-
-//	public User(String name, String address, int age, String phone) {
-//		super();
-//		this.name = name;
-//		this.address = address;
-//		this.age = age;
-//		this.phone = phone;
-//	}
-
-	public String getName() {
-		return name;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public UserPreferences getUserPreferences() {
+		return userPreferences;
+	}
+
+	public void setUserPreferences(UserPreferences userPreferences) {
+		this.userPreferences = userPreferences;
 	}
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", address=" + address + "]";
+		return "User [userId=" + userId + ", userName=" + userName
+				+ ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", userPreferences="
+				+ userPreferences + "]";
 	}
-
-//	public int getAge() {
-//		return age;
-//	}
-//
-//	public void setAge(int age) {
-//		this.age = age;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "User [name=" + name + ", address=" + address + ", age=" + age
-//				+ ", phone=" + phone + "]";
-//	}
-	
 }

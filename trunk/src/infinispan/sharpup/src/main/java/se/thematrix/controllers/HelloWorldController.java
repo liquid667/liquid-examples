@@ -1,6 +1,7 @@
 package se.thematrix.controllers;
 
 import se.thematrix.cache.DataCacheImpl;
+import se.thematrix.model.User;
 
 /**
  * A typical simple backing bean, that is backed to <code>helloworld.jsp</code>
@@ -9,34 +10,58 @@ import se.thematrix.cache.DataCacheImpl;
 public class HelloWorldController {
     
     //properties
-	private String name;
-	private String key;
+	private String userId;
+	private String userName;
+	private String password;
+	private String firstName;
+	private String lastName;
 
 	private DataCacheImpl cache = new DataCacheImpl();
 
 	public HelloWorldController() {}
-	
-	public String getKey() {
-		return key;
-	}
-
-	public void setKey(String key) {
-		this.key = key;
-	}
-	
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
     
-    public Object[] getNames(){
-    	return cache.list().toArray();
-    }
+    public String getUserId() {
+		return userId;
+	}
 
-	public int getSize(){
-    	return cache.size();
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Object[] getUsers(){
+    	return cache.list().toArray();
     }
 
     /**
@@ -48,21 +73,19 @@ public class HelloWorldController {
     }
     
     public String add(){
+    	int uId = Integer.parseInt(getUserId());
+    	User user = new User(uId, getUserName(), getPassword(), getFirstName(), getLastName(), null);
     	
-//    	cache.put(getName(), getName());
+    	cache.put(uId, user);
     	
     	return "success";
     }
     
     public String delete(){
     	
-//    	FacesContext context = FacesContext.getCurrentInstance();
-//    	String thisKey = (String)context.getExternalContext().getRequestParameterMap().get("key");
-    	String id = getKey();
+    	int id = Integer.parseInt(getUserId());
     	
-    	if(id != null){
-//    		cache.remove(id);
-    	}
+   		cache.remove(id);
     	
     	return "success";
     }

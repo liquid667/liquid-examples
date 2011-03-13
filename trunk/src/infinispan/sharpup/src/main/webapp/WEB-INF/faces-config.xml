@@ -11,26 +11,26 @@
 		<managed-bean-class>se.thematrix.controllers.HelloWorldController</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 		<managed-property>
-			<property-name>key</property-name>
-			<value>#{param.key}</value>
+			<property-name>userId</property-name>
+			<value>#{param.userId}</value>
 		</managed-property>
 	</managed-bean>
 	
-	<!-- navigation rules for helloWorld.jsp -->
+	<!-- navigation rules for addUser.jsp -->
 	<navigation-rule>
-		<from-view-id>/helloWorld.jsp</from-view-id>
+		<from-view-id>/addUser.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>success</from-outcome>
-			<to-view-id>/page2.jsp</to-view-id>
+			<to-view-id>/listUsers.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
-	<!-- navigation rules for page2.jsp -->
+	<!-- navigation rules for listUsers.jsp -->
 	<navigation-rule>
-		<from-view-id>/page2.jsp</from-view-id>
+		<from-view-id>/listUsers.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>back</from-outcome>
-			<to-view-id>/helloWorld.jsp</to-view-id>
+			<to-view-id>/addUser.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>
