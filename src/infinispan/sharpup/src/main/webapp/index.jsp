@@ -1,4 +1,4 @@
 <%@ page session="false"%>
 <%
-response.sendRedirect("cache.jsf");
+response.sendRedirect("addUser.jsf");
 %>

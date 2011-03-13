@@ -6,14 +6,6 @@
         <title>cache</title>
     </head>
     <body>
-    
-    
-        <f:view>
-            <h:form id="mainForm">
-            </h:form>
-        </f:view>
-    
-    
         <f:view>
             <h:form id="mainForm">
                 <h:commandLink action="back">
@@ -21,30 +13,34 @@
                 </h:commandLink><br/>
                 <br/>
                 
-              <h:panelGrid columns="2">
-                <h:outputLabel for="name" value="Please enter your name" />
-                <h:inputText id="name" value="#{helloWorld.name}" required="true"/>
-                <h:commandButton value="Press me" action="#{helloWorld.add}"/>
-                <h:messages showDetail="true" showSummary="false"/>
-              </h:panelGrid>
-				<br />
-                <h:dataTable value="#{helloWorld.names}" var="item" border="1">
+                <h:dataTable value="#{helloWorld.users}" var="item" border="1">
                 	<h:column>
                 		<f:facet name="header">
-                			<h:outputText value="Items" />
+                			<h:outputText value="Username" />
                 		</f:facet>
-                		<h:outputText value="#{item}" />
+                		<h:outputText value="#{item.userName}" />
+                	</h:column>
+                	<h:column>
+                		<f:facet name="header">
+                			<h:outputText value="Firstname" />
+                		</f:facet>
+                		<h:outputText value="#{item.firstName}" />
+                	</h:column>
+                	<h:column>
+                		<f:facet name="header">
+                			<h:outputText value="Lastname" />
+                		</f:facet>
+                		<h:outputText value="#{item.lastName}" />
                 	</h:column>
                 	<t:column>
                 		<f:facet name="header"><t:outputLabel value="delete" /></f:facet>
                 		<t:commandLink action="#{helloWorld.delete}" value="Delete">
-                			<f:param name="key" value="#{item}" />
+                			<f:param name="userId" value="#{item.userId}" />
                 		</t:commandLink>
                 	</t:column>
                 </h:dataTable>
                 <br/>
 
-                <h:outputText value="Cache.size: #{helloWorld.size}" />
             </h:form>
         </f:view>
     </body>
