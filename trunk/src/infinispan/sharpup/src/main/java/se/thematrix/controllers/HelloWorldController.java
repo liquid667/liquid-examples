@@ -91,6 +91,8 @@ public class HelloWorldController {
     }
     
     public String login(){
+    	cache.checkLogin(getUserName(), getPassword());
+    	
     	
     	return "success";
     }
