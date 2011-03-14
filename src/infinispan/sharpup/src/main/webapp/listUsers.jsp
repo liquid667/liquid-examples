@@ -33,6 +33,12 @@
                 		<h:outputText value="#{item.lastName}" />
                 	</h:column>
                 	<t:column>
+                		<f:facet name="header"><t:outputLabel value="Edit" /></f:facet>
+                		<t:commandLink action="#{helloWorld.edit}" value="Edit">
+                			<f:param name="userId" value="#{item.userId}" />
+                		</t:commandLink>
+                	</t:column>
+                	<t:column>
                 		<f:facet name="header"><t:outputLabel value="delete" /></f:facet>
                 		<t:commandLink action="#{helloWorld.delete}" value="Delete">
                 			<f:param name="userId" value="#{item.userId}" />
