@@ -89,4 +89,9 @@ public class HelloWorldController {
     	
     	return "success";
     }
+    
+    public String login(){
+    	
+    	return "success";
+    }
 }
