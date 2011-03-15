@@ -16,11 +16,25 @@
 		</managed-property>
 	</managed-bean>
 	
+	<managed-bean>
+		<managed-bean-name>userSearch</managed-bean-name>
+		<managed-bean-class>se.thematrix.controllers.UserSearchController</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>queryString</property-name>
+			<value>#{param.queryString}</value>
+		</managed-property>
+	</managed-bean>
+	
 	<navigation-rule>
 		<from-view-id>/login.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>success</from-outcome>
 			<to-view-id>/listUsers.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>skit</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	

@@ -2,12 +2,21 @@ package se.thematrix.model;
 
 import java.io.Serializable;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.ProvidedId;
+import org.hibernate.search.annotations.Store;
+
+@ProvidedId
+@Indexed
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 3426477320353647086L;
 
 	private int userId;
+	@Field(store = Store.YES)
 	private String userName;
+	@Field(store = Store.YES)
 	private String password;
 	private String firstName;
 	private String lastName;

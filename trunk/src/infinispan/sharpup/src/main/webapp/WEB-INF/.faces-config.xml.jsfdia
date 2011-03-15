@@ -21,6 +21,8 @@
   <PROCESS-ITEM ID="rules:#login.jsp:0" NAME="item" PATH="/login.jsp" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="success::#listUsers.jsp" NAME="output"
     PATH="/listUsers.jsp" TARGET="rules:#listUsers.jsp" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="skit::#login.jsp" NAME="output1"
+    PATH="/login.jsp" TARGET="rules:#login.jsp" TITLE="skit" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>
