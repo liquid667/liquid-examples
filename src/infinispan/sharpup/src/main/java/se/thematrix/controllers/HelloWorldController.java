@@ -91,8 +91,11 @@ public class HelloWorldController {
     }
     
     public String login(){
-    	cache.checkLogin(getUserName(), getPassword());
+    	boolean isValid = cache.checkLogin(getUserName(), getPassword());
     	
+    	if(!isValid){
+    		return "skit";
+    	}
     	
     	return "success";
     }
