@@ -1,8 +1,12 @@
 package se.thematrix.controllers;
 
+import se.thematrix.cache.DataCacheImpl;
+
 public class UserSearchController {
 	
-	public String queryString;
+	private DataCacheImpl cache = new DataCacheImpl();
+
+	private String queryString;
 	
 	public String getQueryString() {
 		return queryString;
@@ -13,6 +17,8 @@ public class UserSearchController {
 	}
 
 	public String searchUser(){
+		
+		cache.searchForUser();
 		return "success";
 	}
 

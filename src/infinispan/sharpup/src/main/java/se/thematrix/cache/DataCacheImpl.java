@@ -1,11 +1,14 @@
 package se.thematrix.cache;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.queryParser.MultiFieldQueryParser;
 import org.apache.lucene.queryParser.ParseException;
+import org.apache.lucene.search.FuzzyQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.util.Version;
 import org.infinispan.Cache;
@@ -67,6 +70,10 @@ public class DataCacheImpl implements DataCache {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	public List<User> searchForUser() {
+		return new ArrayList();
 	}
 	
 }

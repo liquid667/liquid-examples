@@ -90,6 +90,19 @@ public class HelloWorldController {
     	return "success";
     }
     
+    public String edit(){
+    	
+    	int id = Integer.parseInt(getUserId());
+    	User u = cache.get(id);
+    	
+    	setUserName(u.getUserName());
+    	setFirstName(u.getFirstName());
+    	setLastName(u.getLastName());
+    	setPassword(u.getPassword());
+    	
+    	return "success";
+    }
+    
     public String login(){
     	boolean isValid = cache.checkLogin(getUserName(), getPassword());
     	

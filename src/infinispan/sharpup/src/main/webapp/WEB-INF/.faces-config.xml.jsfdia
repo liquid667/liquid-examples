@@ -14,6 +14,9 @@
    PATH="/listUsers.jsp" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="back::#addUser.jsp" NAME="output"
     PATH="/addUser.jsp" TARGET="rules:#addUser.jsp" TITLE="back" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="success:#{helloWorld.edit}:#addUser.jsp"
+    NAME="output1" PATH="/addUser.jsp" TARGET="rules:#addUser.jsp"
+    TITLE="#{helloWorld.edit}:success" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#login.jsp" PATH="/login.jsp"

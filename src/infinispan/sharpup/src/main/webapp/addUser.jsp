@@ -8,10 +8,12 @@
     <body>
         <f:view>
             <h:form id="mainForm">
+            
                 <h:commandLink action="back">
                     <h:outputText value="Home"/>
-                </h:commandLink><br/>
-                <br/>
+                </h:commandLink>
+                
+                <br/><br/>
                 
               <h:panelGrid columns="2">
                 <h:outputLabel for="userId" value="Please enter your userid" />
@@ -25,7 +27,7 @@
                 <h:outputLabel for="lastName" value="Please enter your lastname" />
                 <h:inputText id="lastName" value="#{helloWorld.lastName}" required="true"/>
 
-                <h:commandButton value="Press me" action="#{helloWorld.add}"/>
+                <h:commandButton value="Save" action="#{helloWorld.add}"/>
                 <h:messages showDetail="true" showSummary="false"/>
 
               </h:panelGrid>

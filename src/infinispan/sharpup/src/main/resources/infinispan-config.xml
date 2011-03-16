@@ -10,6 +10,7 @@
 
 	<default>
 		<jmxStatistics enabled="true" />
+		<invocationBatching enabled="true"/>
 		<indexing enabled="true" indexLocalOnly="true" />
 		<clustering mode="dist">
 			<l1 enabled="true" lifespan="60000" />
@@ -29,5 +30,5 @@
 			</loader>
 		</loaders>
 	</namedCache>
-
+	
 </infinispan>
