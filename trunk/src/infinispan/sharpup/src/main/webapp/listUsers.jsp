@@ -1,16 +1,17 @@
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t" %>
-<html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets">
     <head>
         <title>cache</title>
     </head>
     <body>
         <f:view>
             <h:form id="mainForm">
-                <h:commandLink action="back">
-                    <h:outputText value="Home"/>
-                </h:commandLink><br/>
+                <h:commandLink action="addUser">
+                    <h:outputText value="Add user"/>
+                </h:commandLink>
+                <br/>
                 <br/>
                 
                 <h:dataTable value="#{helloWorld.users}" var="item" border="1">

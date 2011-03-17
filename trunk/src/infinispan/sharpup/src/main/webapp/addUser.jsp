@@ -19,8 +19,11 @@
         <f:view>
             <h:form id="mainForm">
             
-                <h:commandLink action="back">
-                    <h:outputText value="Home"/>
+                <h:commandLink action="addUser">
+                    <h:outputText value="Add user"/>
+                </h:commandLink>
+                <h:commandLink action="listUsers.jsp">
+                	<h:outputText value="List Users" />                
                 </h:commandLink>
                 
                 <br/><br/>

@@ -51,7 +51,7 @@
 	<navigation-rule>
 		<from-view-id>/listUsers.jsp</from-view-id>
 		<navigation-case>
-			<from-outcome>back</from-outcome>
+			<from-outcome>addUser</from-outcome>
 			<to-view-id>/addUser.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>

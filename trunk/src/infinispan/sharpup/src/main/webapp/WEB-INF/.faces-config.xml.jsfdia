@@ -12,8 +12,8 @@
   SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#listUsers.jsp:0" NAME="item"
    PATH="/listUsers.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="back::#addUser.jsp" NAME="output"
-    PATH="/addUser.jsp" TARGET="rules:#addUser.jsp" TITLE="back" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addUser::#addUser.jsp" NAME="output"
+    PATH="/addUser.jsp" TARGET="rules:#addUser.jsp" TITLE="addUser" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="success:#{helloWorld.edit}:#addUser.jsp"
     NAME="output1" PATH="/addUser.jsp" TARGET="rules:#addUser.jsp"
     TITLE="#{helloWorld.edit}:success" model-entity="JSFProcessItemOutput"/>
