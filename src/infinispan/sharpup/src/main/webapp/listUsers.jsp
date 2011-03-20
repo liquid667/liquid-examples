@@ -3,18 +3,18 @@
 <%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t" %>
 <html xmlns:ui="http://java.sun.com/jsf/facelets">
     <head>
-        <title>cache</title>
+        <title>list users</title>
+
+		<jsp:include page="head.jsp" />
+
     </head>
     <body>
+    <jsp:include page="layout.jsp" />
+
+	<div id="center_column">
         <f:view>
             <h:form id="mainForm">
-                <h:commandLink action="addUser">
-                    <h:outputText value="Add user"/>
-                </h:commandLink>
-                <br/>
-                <br/>
-                
-                <h:dataTable value="#{helloWorld.users}" var="item" border="1">
+                <h:dataTable value="#{helloWorld.users}" var="item" id="table_block">
                 	<h:column>
                 		<f:facet name="header">
                 			<h:outputText value="Username" />
@@ -50,5 +50,6 @@
 
             </h:form>
         </f:view>
+	</div>
     </body>
 </html>

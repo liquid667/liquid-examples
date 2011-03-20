@@ -14,8 +14,8 @@
    PATH="/listUsers.jsp" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="addUser::#addUser.jsp" NAME="output"
     PATH="/addUser.jsp" TARGET="rules:#addUser.jsp" TITLE="addUser" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="success:#{helloWorld.edit}:#addUser.jsp"
-    NAME="output1" PATH="/addUser.jsp" TARGET="rules:#addUser.jsp"
+   <PROCESS-ITEM-OUTPUT ID="success:#{helloWorld.edit}:#editUser.jsp"
+    NAME="output1" PATH="/editUser.jsp" TARGET="rules:#editUser.jsp"
     TITLE="#{helloWorld.edit}:success" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
@@ -26,6 +26,14 @@
     PATH="/listUsers.jsp" TARGET="rules:#listUsers.jsp" TITLE="success" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="skit::#login.jsp" NAME="output1"
     PATH="/login.jsp" TARGET="rules:#login.jsp" TITLE="skit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#editUser.jsp" PATH="/editUser.jsp"
+  SHAPE="480,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#editUser.jsp:0" NAME="item"
+   PATH="/editUser.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#listUsers.jsp" NAME="output"
+    PATH="/listUsers.jsp" TARGET="rules:#listUsers.jsp" TITLE="success" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>

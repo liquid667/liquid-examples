@@ -26,7 +26,7 @@
     </properties>
 
     <build>
-        <finalName>sharpup-web</finalName>
+        <finalName>sharpup</finalName>
         <plugins>
             <plugin>
                 <!--This plugin allows to run the example using mvn jetty:run -->
