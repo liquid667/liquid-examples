@@ -35,7 +35,7 @@
 		    <h:outputLabel for="lastName" value="Please enter your lastname" />
 		    <h:inputText id="lastName" value="#{helloWorld.lastName}" required="true"/>
 		
-		    <h:commandButton value="Save" action="#{helloWorld.update}"/>
+		    <h:commandButton value="Save" action="#{helloWorld.add}"/>
 		    <h:messages showDetail="true" showSummary="false"/>
 		
 		  </h:panelGrid>

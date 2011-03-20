@@ -73,7 +73,7 @@ public class HelloWorldController {
     }
     
     public String add(){
-    	int uId = Integer.parseInt(getUserId());
+    	int uId = (cache.size() + 1);
     	User user = new User(uId, getUserName(), getPassword(), getFirstName(), getLastName(), null);
     	
     	cache.put(uId, user);
@@ -99,6 +99,15 @@ public class HelloWorldController {
     	setFirstName(u.getFirstName());
     	setLastName(u.getLastName());
     	setPassword(u.getPassword());
+    	
+    	return "success";
+    }
+    
+    public String update(){
+    	int uId = Integer.parseInt(getUserId());
+    	User user = new User(uId, getUserName(), getPassword(), getFirstName(), getLastName(), null);
+    	
+    	cache.put(uId, user);
     	
     	return "success";
     }

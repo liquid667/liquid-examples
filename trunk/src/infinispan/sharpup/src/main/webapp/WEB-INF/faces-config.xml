@@ -16,16 +16,6 @@
 		</managed-property>
 	</managed-bean>
 	
-	<managed-bean>
-		<managed-bean-name>userSearch</managed-bean-name>
-		<managed-bean-class>se.thematrix.controllers.UserSearchController</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-		<managed-property>
-			<property-name>queryString</property-name>
-			<value>#{param.queryString}</value>
-		</managed-property>
-	</managed-bean>
-	
 	<navigation-rule>
 		<from-view-id>/login.jsp</from-view-id>
 		<navigation-case>
@@ -46,6 +36,13 @@
 			<to-view-id>/listUsers.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/editUser.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/listUsers.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	
 	<!-- navigation rules for listUsers.jsp -->
 	<navigation-rule>
@@ -57,7 +54,7 @@
 		<navigation-case>
 			<from-action>#{helloWorld.edit}</from-action>
 			<from-outcome>success</from-outcome>
-			<to-view-id>/addUser.jsp</to-view-id>
+			<to-view-id>/editUser.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>
