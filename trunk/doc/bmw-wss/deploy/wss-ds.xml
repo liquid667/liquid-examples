@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--    Wirelesscar Safety and Security Platform Datasources   (BMWNG)     -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<datasources>
+
+  <xa-datasource>
+    <jndi-name>WssDS</jndi-name>
+    <track-connection-by-tx>true</track-connection-by-tx>
+    <isSameRM-override-value>false</isSameRM-override-value>
+    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+    <xa-datasource-property name="URL">${wcar.wss.wssds.url}</xa-datasource-property>
+    <xa-datasource-property name="User">${wcar.wss.wssds.user}</xa-datasource-property>
+    <xa-datasource-property name="Password">${wcar.wss.wssds.password}</xa-datasource-property>
+    <exception-sorter-class-name>org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter</exception-sorter-class-name>
+    <min-pool-size>10</min-pool-size>
+    <max-pool-size>100</max-pool-size>
+    <no-tx-separate-pools/>
+  </xa-datasource>
+
+  <xa-datasource>
+    <jndi-name>HelpdeskDS</jndi-name>
+    <track-connection-by-tx>true</track-connection-by-tx>
+    <isSameRM-override-value>false</isSameRM-override-value>
+    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+    <xa-datasource-property name="URL">${wcar.wss.helpdeskds.url}</xa-datasource-property>
+    <xa-datasource-property name="User">${wcar.wss.helpdeskds.user}</xa-datasource-property>
+    <xa-datasource-property name="Password">${wcar.wss.helpdeskds.password}</xa-datasource-property>
+    <exception-sorter-class-name>org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter</exception-sorter-class-name>
+    <min-pool-size>10</min-pool-size>
+    <max-pool-size>100</max-pool-size>
+    <no-tx-separate-pools/>
+  </xa-datasource>  
+  
+  <!-- JMS data source should be non-XA; see e.g. http://www.jboss.org/community/docs/DOC-10114 -->
+  <local-tx-datasource>
+    <jndi-name>OracleJMSDS</jndi-name>
+    <track-connection-by-tx>true</track-connection-by-tx>
+    <isSameRM-override-value>false</isSameRM-override-value>
+    <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+    <connection-url>${wcar.wss.oraclejmsds.url}</connection-url>
+    <user-name>${wcar.wss.oraclejmsds.user}</user-name>
+    <password>${wcar.wss.oraclejmsds.password}</password>
+    <exception-sorter-class-name>org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter</exception-sorter-class-name>
+    <min-pool-size>10</min-pool-size>
+    <max-pool-size>100</max-pool-size>
+    <metadata>
+      <type-mapping>Oracle9i</type-mapping>
+    </metadata>
+  </local-tx-datasource>
+
+</datasources>

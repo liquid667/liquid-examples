@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+
+	<!-- ECCI queue which trigger call center notification -->
+	<mbean code="org.jboss.jms.server.destination.QueueService"
+        name="jboss.messaging.destination:service=Queue,name=StoredServiceReceiver"
+        xmbean-dd="xmdesc/Queue-xmbean.xml">
+      <depends optional-attribute-name="ServerPeer">jboss.messaging:service=ServerPeer</depends>
+      <depends>jboss.messaging:service=PostOffice</depends>
+		<!-- redeliver the message after 30 seconds -->
+		<attribute name="RedeliveryDelay">30000</attribute>
+		<!-- redeliver the message maximum 10 times -->
+		<attribute name="MaxDeliveryAttempts">10</attribute>
+      <attribute name="Clustered">true</attribute>
+	</mbean>
+	
+	
+
+</server>

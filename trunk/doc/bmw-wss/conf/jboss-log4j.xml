@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- ============================================================================================================== -->
+<!--  Log4j Configuration                                                                                           -->
+<!-- ============================================================================================================== -->
+
+<!-- For more configuration infromation and examples see the Jakarta Log4j website: http://jakarta.apache.org/log4j -->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+	<!-- // Preserve messages in a local file ///////////////////////////////////////////////////////////////////// -->
+
+	<!-- A time/date based rolling appender -->
+	<appender name="FILE" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="File" value="${jboss.server.log.dir}/bmw-wss-server.log"/>
+		<param name="Append" value="true"/>
+
+		<!-- Rollover at midnight each day -->
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+		<!-- Rollover at the top of each hour -->
+		<!-- <param name="DatePattern" value="'.'yyyy-MM-dd-HH"/> -->
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- The default pattern: Date Priority [Category] Message\n -->
+			<param name="ConversionPattern" value="%d %-5p #(%X{eventId}),[%.3t][%c] %m%n"/>
+
+			<!-- The full pattern: Date MS Priority [Category] (Thread:NDC) Message -->
+			<!-- <param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n"/> -->
+		</layout>
+	</appender>
+
+	<appender name="NGTP.EVENT" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="File" value="${jboss.server.log.dir}/ngtp-event.log"/>
+		<param name="Append" value="true"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%-5c{1}] %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="BMWGW.MSGS" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="File" value="${jboss.server.log.dir}/bmwgw-messages.log"/>
+		<param name="Append" value="true"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%-5c{1}] %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="AXIS.CLIENT" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="File" value="${jboss.server.log.dir}/axis-client.log"/>
+		<param name="Append" value="true"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%-5c{1}] %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="DIGITALMAP.STATISTICS" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"></errorHandler>
+		<param name="File" value="${jboss.server.log.dir}/digitalmap_statistics.log"></param>
+		<param name="Append" value="true"></param>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"></param>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] %m%n"></param>
+		</layout>
+	</appender>
+
+	<appender name="DIGITALMAP.LOG" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"></errorHandler>
+		<param name="File" value="${jboss.server.log.dir}/digitalmap.log"></param>
+		<param name="Append" value="true"></param>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"></param>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] %m%n"></param>
+		</layout>
+	</appender>
+
+	<appender name="ASTERISKCONNECTOR" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"></errorHandler>
+		<param name="File" value="${jboss.server.log.dir}/asterisk-connector.log"></param>
+		<param name="Append" value="true"></param>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"></param>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] %m%n"></param>
+		</layout>
+	</appender>
+
+	<appender name="WATCHDOG" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="File" value="${jboss.server.log.dir}/watchdog.log"/>
+		<param name="Append" value="true"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%-5c{1}] %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="WATCHDOGSTATUS" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="File" value="${jboss.server.log.dir}/watchdogstatus.log"/>
+		<param name="Append" value="true"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%-5c{1}] %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="DESTPINGLOG" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="File" value="${jboss.server.log.dir}/destping.log"/>
+		<param name="Append" value="true"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%-5c{1}] %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="DESTPINGSTATUS" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="File" value="${jboss.server.log.dir}/destpingstatus.log"/>
+		<param name="Append" value="true"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%-5c{1}] %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="BROWSER" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="File" value="${jboss.server.log.dir}/browser.log"/>
+		<param name="Append" value="true"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="INVOCATIONSTATISTICS" class="org.jboss.logging.appender.DailyRollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="File" value="${jboss.server.log.dir}/invocationstatistics.log"/>
+		<param name="Append" value="true"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p #(%X{eventId}),[%.3t] %m%n"/>
+		</layout>
+	</appender>
+
+	<!-- // Append messages to the console //////////////////////////////////////////////////////////////////////// -->
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="Target" value="System.out"/>
+		<param name="Threshold" value="WARN"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- The default pattern: Date Priority [Category] Message\n -->
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/>
+		</layout>
+	</appender>
+
+	<category name="ngtp.event" additivity="false">
+		<priority value="INFO"/>
+		<appender-ref ref="NGTP.EVENT"/>
+		<appender-ref ref="FILE"/>
+	</category>
+
+	<category name="bmwgw.message" additivity="false">
+		<priority value="INFO"/>
+		<appender-ref ref="BMWGW.MSGS"/>
+	</category>
+
+	<!-- Full log of all Axis client SOAP requests -->
+	<category name="org.apache.axis.transport.http.HTTPSender" additivity="false">
+		<priority value="DEBUG"/>
+		<appender-ref ref="AXIS.CLIENT"/>
+	</category>
+
+	<category additivity="false" name="digitalmap.statistics">
+		<priority value="INFO"></priority>
+		<appender-ref ref="DIGITALMAP.STATISTICS"></appender-ref>
+	</category>
+
+	<category additivity="false" name="com.wirelesscar.base.map.digitalmap">
+		<priority value="DEBUG"></priority>
+		<appender-ref ref="DIGITALMAP.LOG"></appender-ref>
+	</category>
+
+	<!-- Asterisk Connector Logs -->
+	<category additivity="false" name="com.wirelesscar.bmw.asterisk">
+		<priority value="DEBUG"></priority>
+		<appender-ref ref="ASTERISKCONNECTOR"></appender-ref>
+	</category>
+	<category additivity="false" name="org.asteriskjava">
+		<priority value="DEBUG"></priority>
+		<appender-ref ref="ASTERISKCONNECTOR"></appender-ref>
+	</category>
+
+	<!-- Watchdog log -->
+	<category name="wssgw.watchdog.log" additivity="false">
+		<priority value="DEBUG"/>
+		<appender-ref ref="WATCHDOG"/>
+	</category>
+
+	<!-- Watchdog status -->
+	<category name="wssgw.watchdog.status" additivity="false">
+		<priority value="DEBUG"/>
+		<appender-ref ref="WATCHDOGSTATUS"/>
+	</category>
+
+	<!-- Destination ping log -->
+	<category name="bmwngtp.destping.log" additivity="false">
+		<priority value="DEBUG"/>
+		<appender-ref ref="DESTPINGLOG"/>
+	</category>
+
+	<!-- Destination ping status -->
+	<category name="bmwngtp.destping.status" additivity="false">
+		<priority value="DEBUG"/>
+		<appender-ref ref="DESTPINGSTATUS"/>
+	</category>
+
+	<!-- Browser log -->
+	<category name="wss.browser.log" additivity="false">
+		<priority value="DEBUG"/>
+		<appender-ref ref="BROWSER"/>
+	</category>
+
+	<!-- Method invocation statistics log -->
+	<category name="bmwngtp.invocation.statistics.log" additivity="false">
+		<priority value="DEBUG"/>
+		<appender-ref ref="INVOCATIONSTATISTICS"/>
+	</category>
+
+	<!-- Struts 2 -->
+	<category name="com.opensymphony">
+		<priority value="WARN"/>
+	</category>
+
+	<!-- Freemarker -->
+	<category name="freemarker">
+		<priority value="WARN"/>
+	</category>
+
+	<!-- Spring -->
+	<category name="org.springframework">
+		<priority value="WARN"/>
+	</category>
+
+	<!-- DWR -->
+	<category name="org.directwebremoting" additivity="false">
+		<priority value="WARN"/>
+	</category>
+	<category name="org.directwebremoting.impl.DefaultRemoter" additivity="false">
+		<priority value="WARN"/>
+	</category>
+
+	<!-- JAWR -->
+	<category name="net.jawr">
+		<priority value="INFO"/>
+	</category>
+
+	<!-- Quartz -->
+	<category name="org.quartz">
+		<priority value="INFO"/>
+	</category>
+
+	<!-- Dozer -->
+	<category name="org.dozer">
+		<priority value="INFO"/>
+	</category>
+
+	<!-- Limit the org.apache category to INFO as its DEBUG is verbose -->
+	<category name="org.apache">
+		<priority value="INFO"/>
+	</category>
+
+	<category name="com.arjuna">
+		<priority value="INFO"/>
+	</category>
+
+	<!-- Limit the org.jgroups category to WARN as its INFO is verbose -->
+	<category name="org.jgroups">
+		<priority value="WARN"/>
+	</category>
+
+	<!-- Limit jboss axis to INFO as its DEBUG is even more verbose -->
+	<category name="org.jboss.axis">
+		<priority value="INFO"/>
+	</category>
+
+	<!-- Limit JBoss categories -->
+	<category name="org.jboss">
+		<priority value="INFO"/>
+	</category>
+
+	<category name="org.jboss.mx.loading">
+		<priority value="INFO"/>
+	</category>
+
+	<!-- Limit the JSR77 categories -->
+	<category name="org.jboss.management">
+		<priority value="INFO"/>
+	</category>
+
+	<!-- timer warn problem -->
+	<category name="org.jboss.ejb.txtimer.TimerImpl">
+		<priority value="ERROR"/>
+	</category>
+
+	<category name="org.hibernate" additivity="false">
+		<priority value="WARN"/>
+	</category>
+
+	<category name="org.tinyradius" additivity="false">
+		<priority value="INFO"/>
+	</category>
+
+	<category name="httpclient" additivity="false">
+		<priority value="INFO"/>
+	</category>
+
+	<!-- Limit Mule SedaService to INFO as it's DEBUG is verbose during polling -->
+	<category name="org.mule.model.seda.SedaService">
+		<priority value="INFO"/>
+	</category>
+
+	<!-- Limit MBean to INFO as it's DEBUG becomes verbose during polling -->
+	<category name="javax.enterprise.resource.webcontainer">
+		<priority value="INFO"/>
+	</category>
+
+	<category name="org.displaytag.tags">
+		<priority value="INFO"/>
+	</category>
+
+	<category name="com.wirelesscar.wss.util.impl.HAJNDIUtilImpl">
+		<priority value="INFO"/>
+	</category>
+
+	<category name="com.wirelesscar.common.property.mbean.SystemPropertiesServiceMonitoring">
+		<priority value="INFO"/>
+	</category>
+
+	<category name="com.wirelesscar.wss.csp.web.util.EjbBeanPostProcessor">
+		<priority value="INFO"/>
+	</category>
+
+	<category name="com.wirelesscar.cgw">
+		<priority value="WARN"/>
+	</category>
+
+	<category name="com.wirelesscar.ecci.business.schedueling">
+		<priority value="INFO"/>
+	</category>
+
+	<!-- Limit JBoss webservice category -->
+	<!--
+	<category name="org.jboss.webservice">
+		<priority value="DEBUG"/>
+	</category>
+	-->
+
+	<!-- Decrease the priority threshold for the org.jboss.varia category -->
+	<!--
+	<category name="org.jboss.varia">
+		<priority value="DEBUG"/>
+	</category>
+	-->
+
+	<!-- Show the evolution of the DataSource pool in the logs [inUse/Available/Max] -->
+	<!--
+	<category name="org.jboss.resource.connectionmanager.JBossManagedConnectionPool">
+		<priority value="TRACE" class="org.jboss.logging.XLevel"/>
+	</category>
+	-->
+
+	<!--
+		| An example of enabling the custom TRACE level priority that is used
+		| by the JBoss internals to diagnose low level details. This example
+		| turns on TRACE level msgs for the org.jboss.ejb.plugins package and its
+		| subpackages. This will produce A LOT of logging output.
+	-->
+	<!--
+	<category name="org.jboss.system">
+		<priority value="TRACE" class="org.jboss.logging.XLevel"/>
+	</category>
+	<category name="org.jboss.ejb.plugins">
+		<priority value="TRACE" class="org.jboss.logging.XLevel"/>
+	</category>
+	-->
+
+	<!--
+		Logs these events to SNMP:
+			- server starts/stops
+			- cluster evolution (node death/startup)
+			- When an EJB archive is deployed (and associated verified messages)
+			- When an EAR archive is deployed
+	-->
+	<!--
+	<category name="org.jboss.system.server.Server">
+		<priority value="INFO" />
+		<appender-ref ref="TRAP_LOG"/>
+	</category>
+	<category name="org.jboss.ha.framework.interfaces.HAPartition.lifecycle">
+		<priority value="INFO" />
+		<appender-ref ref="TRAP_LOG"/>
+	</category>
+	<category name="org.jboss.deployment.MainDeployer">
+		<priority value="ERROR" />
+		<appender-ref ref="TRAP_LOG"/>
+	</category>
+	<category name="org.jboss.ejb.EJBDeployer">
+		<priority value="INFO" />
+		<appender-ref ref="TRAP_LOG"/>
+	</category>
+	<category name="org.jboss.deployment.EARDeployer">
+		<priority value="INFO" />
+		<appender-ref ref="TRAP_LOG"/>
+	</category>
+	-->
+
+	<!-- ======================= -->
+	<!-- Setup the Root category -->
+	<!-- ======================= -->
+
+	<root>
+		<appender-ref ref="CONSOLE"/>
+		<appender-ref ref="FILE"/>
+	</root>
+
+	<!-- Clustering logging -->
+	<!-- Uncomment the following to redirect the org.jgroups and org.jboss.ha categories to a cluster.log file. -->
+	<!--
+	<appender name="CLUSTER" class="org.jboss.logging.appender.RollingFileAppender">
+		<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+		<param name="File" value="${jboss.server.log.dir}/cluster.log"/>
+		<param name="Append" value="false"/>
+		<param name="MaxFileSize" value="500KB"/>
+		<param name="MaxBackupIndex" value="1"/>
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+		</layout>
+	</appender>
+	<category name="org.jgroups">
+		<priority value="DEBUG" />
+		<appender-ref ref="CLUSTER"/>
+	</category>
+	<category name="org.jboss.ha">
+		<priority value="DEBUG" />
+		<appender-ref ref="CLUSTER"/>
+	</category>
+	-->
+</log4j:configuration>
