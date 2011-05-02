@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<server>
+
+  <!-- ==================================================================== -->
+  <!-- PropertyEditorManager Service                                        -->
+  <!-- ==================================================================== -->
+
+  <!--
+     | Allows access to the PropertyEditorManager, which is used when setting
+     | MBean attribute values from configuration.
+   -->
+
+  <mbean code="org.jboss.varia.property.PropertyEditorManagerService"
+	 name="jboss:type=Service,name=PropertyEditorManager">
+
+    <!--
+       | Register and editor for each of the type_name=editor_type_name listed
+       | in properties file style convetion.
+
+    <attribute name="Editors">
+      java.net.URL=my.project.editors.URLPropertyEditor
+    </attribute>
+
+    -->
+
+  </mbean>
+
+
+  <!-- ==================================================================== -->
+  <!-- System Properties Service                                            -->
+  <!-- ==================================================================== -->
+
+  <mbean code="com.wirelesscar.common.property.mbean.SystemPropertiesServiceMonitoring"
+         name="WirelessCar.property:service=MonitoredSystemProperty">
+
+    <attribute name="PropertyFileList">
+    ./conf/bmwng.properties,./conf/ecci.properties,./conf/resources/csp/map/GoogleMaps.properties,./conf/resources/csp/map/BingMaps.properties
+    </attribute>
+
+<!--
+    <attribute name="Properties">
+      wirelesscar.jboss.instance=foobar
+    </attribute>
+     -->
+
+  </mbean>
+
+</server>

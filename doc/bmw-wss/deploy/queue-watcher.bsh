@@ -1,0 +1,113 @@
+import java.util.*;
+import javax.management.*;
+import org.apache.log4j.*;
+
+import org.jboss.jms.server.messagecounter.MessageCounter;
+import org.jboss.system.ServiceMBeanSupport;
+
+MBeanServer mbeanServer;
+Long lastPollTime = 0;
+HashMap lastCounts = new HashMap();
+
+Logger logger = Logger.getLogger("QueueStarter");
+
+public String objectName() {
+   return "wirelesscar:service=agent,type=mq";
+}
+public String[] dependsOn() {
+   return new String[] {}; 
+} 
+   
+public void setCtx(ServiceMBeanSupport wrapper) {
+   mbeanServer = wrapper.getServer();
+}
+public Class[] getInterfaces() {
+  return new Class[]{java.util.concurrent.Callable.class};
+}
+
+public void start() {
+  logger.info("start");
+}
+public void stop() {
+  logger.info("stop");
+}
+public void create() {
+  logger.info("create");
+}
+public void destroy() {
+  logger.info("destroy");
+}
+
+public String call() {
+    logger.info("call");
+    
+    String hostName = (String) mbeanServer.getAttribute(new ObjectName("jboss.system:type=ServerInfo"), "HostName");
+    
+    StringBuffer sb = new StringBuffer();
+    Set ois = mbeanServer.queryMBeans(new ObjectName("jboss.messaging.destination:*"),null);
+    Long timeDiff = System.currentTimeMillis() - lastPollTime;
+    for(Iterator i = ois.iterator() ; i.hasNext() ; ){
+        ObjectInstance oi = (ObjectInstance)i.next();
+            
+        // Get name of destination.
+        String destinationName = mbeanServer.getAttribute(oi.getObjectName(),"Name");
+            
+        // Cet all message counters
+        List mcs = new ArrayList();
+        String serviceType = oi.getObjectName().getKeyProperty("service");
+        if (serviceType.equals("Queue")) {
+            mcs = mcs.add(mbeanServer.getAttribute(oi.getObjectName(),"MessageCounter"));
+        }
+        else {
+            mcs.addAll((List)mbeanServer.getAttribute(oi.getObjectName(),"MessageCounters"));
+        }
+            
+        StringBuffer name = new StringBuffer();
+        count = 0;
+        depth = 0;
+        for(MessageCounter o : mcs) { 
+            MessageCounter mc = (MessageCounter)o;
+            name.append(hostName).append(".").append(destinationName);
+            if(mc.getDestinationTopic() && mc.getDestinationSubscription() != null) {
+                name.append(".").append(mc.getDestinationName().replace("Subscription.", ""));
+            }
+            currentCount = mc.getCount();
+            sb.append(name).append(".count,").append(currentCount).append("\n");
+            count = count + currentCount;
+
+            sb.append(name).append(".depth,").append(mc.getMessageCount()).append("\n");
+            depth = depth + mc.getMessageCount();
+
+            lastCount = lastCounts.get(String.valueOf(name));
+            if (lastCount == null) {
+                lastCount = 0;
+            }
+            lastCounts.put(String.valueOf(name), currentCount);
+            pm = 0;
+            if (timeDiff > 30000L) {
+                pm = (currentCount - lastCount) * 60000L / timeDiff;
+            }
+            sb.append(name).append(".perMinute,").append(pm).append("\n");
+
+            name.setLength(0);
+        } 
+        if(mcs.size() > 1) {
+            String key = hostName + "." + destinationName;
+            sb.append(key).append(".count,").append(count).append("\n");
+            sb.append(key).append(".depth,").append(depth).append("\n");
+
+            lastCount = lastCounts.get(key);
+            if (lastCount == null) {
+                lastCount = 0;
+            }
+            lastCounts.put(key, count);
+            perMinute = 0;
+            if (timeDiff > 30000L) {
+                perMinute = (count - lastCount) * 60000L / timeDiff;  
+            }
+            sb.append(key).append(".perMinute,").append(perMinute).append("\n");
+        }
+    }
+    lastPollTime = System.currentTimeMillis();
+    return sb.toString();
+}
