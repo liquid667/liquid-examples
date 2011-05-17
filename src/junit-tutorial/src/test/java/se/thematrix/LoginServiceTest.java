@@ -1,4 +1,4 @@
-package se.thematrix;
+ï»¿package se.thematrix;
 
 import org.easymock.*;
 import junit.framework.TestCase;
@@ -21,7 +21,7 @@ public class LoginServiceTest extends TestCase {
 		User results = new User();
 		String userName = "testUserName";
 		String password = "testPassword";
-		String passwordHash = "þÓ¶&I7€€³Ni=.";
+		String passwordHash = "jaklsdfjkalsdfjÃ¶=.";
 		
 		EasyMock.expect(mockDao.loadByUsernameAndPassword(EasyMock.eq(userName), EasyMock.eq(passwordHash))).andReturn(results);
 		

@@ -16,6 +16,7 @@
     <module>infinispan-web</module>
 	<!--module>infinispan-webapp</module-->
 	<!--module>jboss-infinispan-example</module-->
+    <module>hibernate-ogm-example</module>
   </modules>
   
 </project>

@@ -14,5 +14,6 @@
   <modules>
 	<module>liquid-examples</module>
 	<module>infinispan</module>
+	<module>junit-tutorial</module>
   </modules>
 </project>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:infinispan:config:5.0 http://www.infinispan.org/schemas/infinispan-config-5.0.xsd"
+	xmlns="urn:infinispan:config:5.0">
+
+	<global>
+		<transport clusterName="demoCluster" />
+		<globalJmxStatistics enabled="true" allowDuplicateDomains="true" />
+	</global>
+
+	<default>
+		<jmxStatistics enabled="true" />
+		<invocationBatching enabled="true"/>
+		<indexing enabled="true" indexLocalOnly="true" />
+		<clustering mode="dist">
+			<l1 enabled="true" lifespan="60000" />
+			<hash numOwners="2" rehashRpcTimeout="120000" />
+			<sync />
+		</clustering>
+	</default>
+
+	<namedCache name="Users">
+		<loaders passivation="false" shared="false" preload="true">
+			<loader class="org.infinispan.loaders.file.FileCacheStore"
+				fetchPersistentState="true" ignoreModifications="false"
+				purgeOnStartup="false">
+				<properties>
+					<property name="location" value="C:\temp\store" />
+				</properties>
+			</loader>
+		</loaders>
+	</namedCache>
+	
+</infinispan>
