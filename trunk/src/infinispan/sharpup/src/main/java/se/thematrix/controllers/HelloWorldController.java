@@ -95,6 +95,7 @@ public class HelloWorldController {
     	int id = Integer.parseInt(getUserId());
     	User u = cache.get(id);
     	
+    	setUserId(getUserId());
     	setUserName(u.getUserName());
     	setFirstName(u.getFirstName());
     	setLastName(u.getLastName());
