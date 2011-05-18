@@ -9,7 +9,7 @@ public abstract class JpaDao<K, E> implements Dao<K, E>{
 
 	protected Class<E> entityClass;
 	
-	@PersistenceContext
+	@PersistenceContext(unitName="org.hibernate.ogm.tutorial.jpa")
 	protected EntityManager entityManager;
 
 	@SuppressWarnings("unchecked")
