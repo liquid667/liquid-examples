@@ -5,12 +5,10 @@ import javax.ejb.EJB;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import se.thematrix.cache.DataCacheImpl;
 import se.thematrix.dao.BreedDao;
 import se.thematrix.dao.DogDao;
 import se.thematrix.model.Breed;
 import se.thematrix.model.Dog;
-import se.thematrix.model.User;
 
 /**
  * A typical simple backing bean, that is backed to <code>helloworld.jsp</code>
@@ -33,8 +31,8 @@ public class HelloWorldController {
 	@EJB(name="breedDao")
 	private BreedDao breedDao;
 
-	private DataCacheImpl cache = new DataCacheImpl();
-
+	//private DataCacheImpl cache = new DataCacheImpl();
+	
 	public HelloWorldController() {}
     
     public String getUserId() {
@@ -78,7 +76,8 @@ public class HelloWorldController {
 	}
 
 	public Object[] getUsers(){
-		return cache.list().toArray();
+//		return cache.list().toArray();
+		return null;
     }
 
     /**
@@ -90,10 +89,10 @@ public class HelloWorldController {
     }
     
     public String add(){
-    	int uId = (cache.size() + 1);
-    	User user = new User(uId, getUserName(), getPassword(), getFirstName(), getLastName(), null);
-    	
-    	cache.put(uId, user);
+//    	int uId = (cache.size() + 1);
+//    	User user = new User(uId, getUserName(), getPassword(), getFirstName(), getLastName(), null);
+//    	
+//    	cache.put(uId, user);
     	
 		Breed collie = new Breed();
 		collie.setName("Collie");
@@ -112,34 +111,34 @@ public class HelloWorldController {
     }
     
     public String delete(){
-    	
-    	int id = Integer.parseInt(getUserId());
-    	
-   		cache.remove(id);
+//    	
+//    	int id = Integer.parseInt(getUserId());
+//    	
+//   		cache.remove(id);
     	
     	return "success";
     }
     
     public String edit(){
     	
-    	int id = Integer.parseInt(getUserId());
-    	User u = cache.get(id);
-    	
-    	setUserId(getUserId());
-    	setUserName(u.getUserName());
-    	setFirstName(u.getFirstName());
-    	setLastName(u.getLastName());
-    	setPassword(u.getPassword());
+//    	int id = Integer.parseInt(getUserId());
+//    	User u = cache.get(id);
+//    	
+//    	setUserId(getUserId());
+//    	setUserName(u.getUserName());
+//    	setFirstName(u.getFirstName());
+//    	setLastName(u.getLastName());
+//    	setPassword(u.getPassword());
     	
     	return "success";
     }
     
     public String update(){
-    	int uId = Integer.parseInt(getUserId());
-    	User user = new User(uId, getUserName(), getPassword(), getFirstName(), getLastName(), null);
-    	
-    	cache.put(uId, user);
-    	
+//    	int uId = Integer.parseInt(getUserId());
+//    	User user = new User(uId, getUserName(), getPassword(), getFirstName(), getLastName(), null);
+//    	
+//    	cache.put(uId, user);
+//    	
     	return "success";
     }
     
