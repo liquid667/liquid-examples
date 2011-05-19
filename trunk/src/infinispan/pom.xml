@@ -15,6 +15,7 @@
     <module>infinispan-web</module>
     <module>hibernate-ogm-example</module>
 	<module>sharpup</module>
+    <module>weld-jpa-example</module>
   </modules>
   
 </project>
