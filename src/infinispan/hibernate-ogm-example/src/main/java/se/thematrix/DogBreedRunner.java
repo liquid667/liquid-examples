@@ -1,5 +1,7 @@
 package se.thematrix;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -45,9 +47,16 @@ public class DogBreedRunner {
 			// Retrieve your entities the way you are used to in plain JPA
 			tm.begin();
 			em = emf.createEntityManager();
+			
+//			Dog myDina = (Dog)em.createNamedQuery("Dog.findDogById").setParameter("id", dinaId).getSingleResult();
+//			logger.debug("myDina: {}", myDina);
+//			List<Dog> dogs = em.createQuery("select d from Dogs d order by d.name").getResultList();
+//			logger.debug("dogs: {}", dogs);
+			
 			dina = em.find(Dog.class, dinaId);
 			logger.debug(dina.getName());
 			logger.debug(dina.getBreed().getName());
+			logger.debug("dina: {}", dina);
 			em.flush();
 			em.close();
 			tm.commit();

@@ -5,9 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.TableGenerator;
 
 @Entity
+@NamedQueries( { @NamedQuery(name = "Dog.findDogById", query = "select d "
+	+ "from Dog d where d.id= :id") })
 public class Dog {
 	private Long id;
 	private String name;
@@ -39,5 +43,10 @@ public class Dog {
 
 	public void setBreed(Breed breed) {
 		this.breed = breed;
+	}
+
+	@Override
+	public String toString() {
+		return "Dog [id=" + id + ", name=" + name + ", breed=" + breed + "]";
 	}
 }

@@ -26,10 +26,4 @@
 		</loaders>  
 	</default>
 
-	<namedCache name="korv">
-	<loaders>
-	</loaders>
-	
-	</namedCache>   
-   
 </infinispan>

@@ -29,4 +29,9 @@ public class Breed {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return "Breed [id=" + id + ", name=" + name + "]";
+	}
 }
