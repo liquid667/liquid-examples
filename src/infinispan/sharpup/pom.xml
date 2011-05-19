@@ -234,21 +234,21 @@
 			<version>${version.jboss}</version>
 		</dependency>
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.infinispan</groupId>
 			<artifactId>infinispan-core</artifactId>
 			<version>${infinispan.version}</version>
-		</dependency>
+		</dependency-->
 		<dependency>
 			<groupId>org.infinispan</groupId>
 			<artifactId>infinispan-query</artifactId>
 			<version>${infinispan.version}</version>
 		</dependency>
-		<dependency>
+		<!-- dependency>
 			<groupId>org.infinispan</groupId>
 			<artifactId>infinispan-lucene-directory</artifactId>
 			<version>${infinispan.version}</version>
-		</dependency>
+		</dependency-->
 
 		<dependency>
 			<groupId>org.hibernate.ogm</groupId>
@@ -261,7 +261,7 @@
 			<version>3.12.1.GA</version>
 			<scope>compile</scope>
 		</dependency>
-        <dependency>
+        <!-- dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.6.1</version>
@@ -272,7 +272,7 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.6.1</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency-->
 
 		<dependency>
 			<groupId>org.jboss.jbossts</groupId>
