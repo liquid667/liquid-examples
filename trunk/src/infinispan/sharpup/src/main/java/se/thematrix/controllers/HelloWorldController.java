@@ -1,6 +1,15 @@
 package se.thematrix.controllers;
 
+import javax.ejb.EJB;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import se.thematrix.cache.DataCacheImpl;
+import se.thematrix.dao.BreedDao;
+import se.thematrix.dao.DogDao;
+import se.thematrix.model.Breed;
+import se.thematrix.model.Dog;
 import se.thematrix.model.User;
 
 /**
@@ -8,6 +17,8 @@ import se.thematrix.model.User;
  * 
  */
 public class HelloWorldController {
+	
+	private final static Logger log = LoggerFactory.getLogger(HelloWorldController.class);
     
     //properties
 	private String userId;
@@ -15,6 +26,12 @@ public class HelloWorldController {
 	private String password;
 	private String firstName;
 	private String lastName;
+	
+	@EJB(name="dogDao")
+	private DogDao dogDao;
+	
+	@EJB(name="breedDao")
+	private BreedDao breedDao;
 
 	private DataCacheImpl cache = new DataCacheImpl();
 
@@ -77,6 +94,19 @@ public class HelloWorldController {
     	User user = new User(uId, getUserName(), getPassword(), getFirstName(), getLastName(), null);
     	
     	cache.put(uId, user);
+    	
+		Breed collie = new Breed();
+		collie.setName("Collie");
+		breedDao.persist(collie);
+		
+		Dog dina = new Dog();
+		dina.setName("Dina");
+		dina.setBreed(collie);
+		long dinaId = dina.getId();
+		dogDao.persist(dina);
+		
+		Dog dd = dogDao.findById(dinaId);
+		log.debug("dinaDog: {}", dd);
     	
     	return "success";
     }

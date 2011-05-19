@@ -23,6 +23,7 @@
 		<resteasy.version>2.0.1.GA</resteasy.version>
 		<jersey.version>1.5</jersey.version>
 
+		<version.jboss>EAP_4.3.0_CP08</version.jboss>
 		<infinispan.version>4.2.0.FINAL</infinispan.version>
 		<hibernate.ogm.version>3.0.0-SNAPSHOT</hibernate.ogm.version>
 	</properties>
@@ -41,7 +42,7 @@
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 				</configuration>
 			</plugin>
-			<plugin>
+			<!--plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
@@ -49,7 +50,7 @@
 					<username>admin</username>
 					<password>r00t</password>
 				</configuration>
-			</plugin>
+			</plugin-->
 			<plugin>
 				<groupId>org.zeroturnaround</groupId>
 				<artifactId>jrebel-maven-plugin</artifactId>
@@ -222,6 +223,17 @@
 
 	<!-- Project dependencies -->
 	<dependencies>
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jboss-ejb3</artifactId>
+			<version>${version.jboss}</version>
+		</dependency>
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jboss-ejb3x</artifactId>
+			<version>${version.jboss}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.infinispan</groupId>
 			<artifactId>infinispan-core</artifactId>
