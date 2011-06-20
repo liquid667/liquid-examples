@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.wirelesscar.common</groupId>
+  <artifactId>wcar-common</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>wcar-common</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<version.jboss>EAP_4.3.0_CP08</version.jboss>
+	<version.jboss1>jboss-eap-5.1</version.jboss1>
+  </properties>
+
+  <dependencies>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.14</version>
+	</dependency>
+	
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+			<dependency>
+				<groupId>jboss</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${version.jboss}</version>
+			</dependency>
+			<dependency>
+				<groupId>jboss</groupId>
+				<artifactId>jboss</artifactId>
+				<version>${version.jboss}</version>
+			</dependency>
+			<dependency>
+				<groupId>jboss</groupId>
+				<artifactId>jboss-system</artifactId>
+				<version>${version.jboss1}</version>
+			</dependency>
+			<dependency>
+				<groupId>jboss</groupId>
+				<artifactId>jboss-jmx</artifactId>
+				<version>${version.jboss}</version>
+			</dependency>
+			<dependency>
+				<groupId>jboss</groupId>
+				<artifactId>jboss-j2ee</artifactId>
+				<version>${version.jboss}</version>
+			</dependency>
+			<dependency>
+				<groupId>jboss</groupId>
+				<artifactId>jbossall-client</artifactId>
+				<version>${version.jboss}</version>
+			</dependency>
+
+  </dependencies>
+  
+   <repositories>
+		<repository>
+		   <id>JBoss.org Public Repository</id>
+		   <releases>
+		      <enabled>true</enabled>
+		   </releases>
+		   <snapshots>
+		      <enabled>true</enabled>
+		   </snapshots>
+		   <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+   </repositories>	
+  
+</project>
